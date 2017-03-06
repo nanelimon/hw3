@@ -1,0 +1,72 @@
+//============================================================================
+// Name        : Adding.cpp
+// Author      : Busra Ondul
+// Version     :
+// Copyright   : 26.02.2017
+// Description : Adding Complex Numbers With Overloading Operator
+//============================================================================
+
+#include <iostream>
+using namespace std;
+
+struct ComplexNumbers {
+
+	double a;
+	double b;
+
+	ComplexNumbers() {
+		a = 0;
+		b = 0;
+	}
+	ComplexNumbers(double x, double y) {
+		a = x;
+		b = y;
+	}
+};
+
+ostream& operator <<(ostream& out, ComplexNumbers& u) {
+	cout << u.a << " + i" << u.b;
+	return out;
+}
+
+istream& operator >>(istream& in, ComplexNumbers& u) {
+
+	cin >> u.a >> u.b;
+	return in;
+}
+
+void operator+=(ComplexNumbers &a, ComplexNumbers &b) {
+	a.a = a.a + b.a;
+	a.b = a.b + b.b;
+}
+;
+
+void operator-=(ComplexNumbers &a, ComplexNumbers &b) {
+	a.a = a.a - b.a;
+	a.b = a.b - b.b;
+}
+;
+
+int main() {
+	ComplexNumbers a;
+
+	cout << "Enter first complex number seperating by space" << endl;
+	cin >> a;
+
+	ComplexNumbers b;
+
+	cout << "Enter second complex number seperating by space " << endl;
+	cin >> b;
+
+	cout << "first complex number is: " << a << endl;
+	cout << "second complex number is: " << b << endl;
+
+	a += b;
+	cout << "Sum is:" << a << endl;
+
+	a -= b;
+	cout << "Substract is:" << a << endl;
+
+	return 0;
+}
+
